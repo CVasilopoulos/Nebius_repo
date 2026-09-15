@@ -47,7 +47,7 @@ You get one claim and the exact log lines it cites. Decide whether the cited lin
 - supported: the facts in the claim are shown in the lines, or follow directly from them (for example, comparing timestamps, or an error message that names its cause).
 - partial: the main point is shown, but at least one specific detail (a number, time, name or causal link) is not in the lines.
 - unsupported: the lines do not show the main point, or contradict it.
-Respond with JSON only, reason first: {"reason": "one short sentence naming what is or is not shown", "verdict": "supported|partial|unsupported"}"""
+Respond with JSON only, reason first: {"reason": "at most 2 complete, concise sentences naming what is or is not shown", "verdict": "supported|partial|unsupported"}"""
 
 VERIFY_USER = """Claim: {claim}
 

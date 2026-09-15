@@ -45,7 +45,7 @@ def load_settings() -> Settings:
         verify_concurrency=int(env("VERIFY_CONCURRENCY", "8")),
         extract_max_tokens=int(env("EXTRACT_MAX_TOKENS", "2500")),
         reason_max_tokens=int(env("REASON_MAX_TOKENS", "9000")),
-        verify_max_tokens=int(env("VERIFY_MAX_TOKENS", "400")),
+        verify_max_tokens=int(env("VERIFY_MAX_TOKENS", "600")),
         extract_thinking=env("EXTRACT_THINKING", "false").lower() == "true",
         verify_thinking=env("VERIFY_THINKING", "false").lower() == "true",
         usage_log=env("USAGE_LOG") or None,

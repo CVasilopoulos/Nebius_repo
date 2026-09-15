@@ -1,8 +1,11 @@
+import json
+
 import pytest
 
 from postmortem_pilot.config import load_settings
 from postmortem_pilot.jsonx import extract_json
 from postmortem_pilot.logs import build_corpus, chunk, redact, timestamp_key
+from postmortem_pilot.pipeline import clip_text
 from postmortem_pilot.samples import list_samples, recording_path
 
 
@@ -35,6 +38,35 @@ def test_timestamp_key_normalises_formats():
     assert timestamp_key("2026-09-02 02:51:37.880 UTC [6023] ERROR") == "2026-09-02T02:51:37.880"
     assert timestamp_key("2026-09-02T02:12:40Z Warning") == "2026-09-02T02:12:40.000"
     assert timestamp_key("no time") == ""
+
+
+def test_clip_text_keeps_short_text_untouched():
+    assert clip_text("Short reason.", 480) == "Short reason."
+
+
+def test_clip_text_cuts_at_sentence_boundary_not_mid_word():
+    text = "Alpha bravo charlie. " + ("delta " * 60)
+    assert clip_text(text, 30) == "Alpha bravo charlie."
+
+
+def test_clip_text_falls_back_to_word_boundary_when_no_sentence_end():
+    assert clip_text("abcdefghij klmnopqrst uvwxyzabcd", 15) == "abcdefghij"
+
+
+TERMINAL_PUNCTUATION = (".", "!", "?", '."', '!"', '?"')
+
+
+def test_recorded_verdicts_have_complete_explanations():
+    settings = load_settings()
+    path = recording_path(settings.samples_dir, "pgbackrest-disk-full")
+    assert path is not None
+    verdict_events = [json.loads(line) for line in path.read_text().splitlines() if line]
+    verdicts = [e for e in verdict_events if e.get("type") == "verdict"]
+    assert len(verdicts) >= 10
+    for event in verdicts:
+        reason = event["reason"].strip()
+        assert reason, event
+        assert reason.endswith(TERMINAL_PUNCTUATION), f"truncated explanation for {event['claim_id']!r}: {reason!r}"
 
 
 def test_samples_load_and_redact():

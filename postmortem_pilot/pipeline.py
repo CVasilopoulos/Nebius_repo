@@ -30,6 +30,19 @@ def normalise_ref(ref) -> str:
     return str(ref or "").strip().strip("[]").replace(" ", "")
 
 
+def clip_text(text: str, limit: int) -> str:
+    text = text.strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    for sep in (". ", "! ", "? "):
+        index = cut.rfind(sep)
+        if index != -1:
+            return cut[:index + 1]
+    index = cut.rfind(" ")
+    return cut[:index] if index != -1 else cut
+
+
 def clean_events(payload, valid: dict[str, LogLine]) -> tuple[list[dict], int]:
     items = payload.get("events", []) if isinstance(payload, dict) else payload if isinstance(payload, list) else []
     events, dropped = [], 0
@@ -172,7 +185,7 @@ class Pipeline:
                 )
                 payload = extract_json(result.content)
                 verdict = str(payload.get("verdict", "")).lower() if isinstance(payload, dict) else ""
-                reason = str(payload.get("reason", ""))[:240] if isinstance(payload, dict) else ""
+                reason = clip_text(str(payload.get("reason", "")), 480) if isinstance(payload, dict) else ""
                 return claim, verdict if verdict in VERDICTS else "partial", reason, result
 
         counts = {"supported": 0, "partial": 0, "unsupported": 0}
