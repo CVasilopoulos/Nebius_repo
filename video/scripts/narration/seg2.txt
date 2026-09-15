@@ -1,0 +1,1 @@
+This sample incident has a Postgres log, backup tool output, Kubernetes events, the auth service log, and alert history. It also contains a database password and a bearer token, and a frontend deploy that happened at the same time, which is a classic red herring.

@@ -1,0 +1,1 @@
+The expensive model never reads the raw dump. Nemotron 3 Ultra, the five hundred fifty billion parameter reasoning model, gets only the merged timeline and the lines that matter. It separates trigger from root cause, builds the causal chain, and explicitly rules out the coincidental deploy.

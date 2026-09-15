@@ -1,0 +1,1 @@
+Postmortem Pilot runs entirely on Nebius Token Factory with three NVIDIA Nemotron open models, each chosen for the job it does best: Nano to read, Ultra to reason, Lightning to verify. The code is open source under the M I T license. Thanks for watching.

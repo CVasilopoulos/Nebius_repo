@@ -1,0 +1,1 @@
+Now the part that makes this trustworthy. Every single claim is fact checked by a third model, Nemotron 3 point 5 Lightning, which sees only that claim and the lines it cites. These checks run in parallel and take a second or two. Anything the logs do not prove is flagged instead of quietly ending up in your incident report.

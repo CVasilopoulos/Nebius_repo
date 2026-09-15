@@ -1,0 +1,147 @@
+1
+00:00:06,000 --> 00:00:10,345
+It is three in the morning, logins are down, and forty minutes later you are left
+
+2
+00:00:10,345 --> 00:00:13,350
+with five different log files and a postmortem to write.
+
+3
+00:00:13,350 --> 00:00:17,320
+Postmortem Pilot turns those raw logs into an evidence grounded, blameless
+
+4
+00:00:17,320 --> 00:00:18,875
+postmortem in about a minute.
+
+5
+00:00:20,875 --> 00:00:25,972
+This sample incident has a Postgres log, backup tool output, Kubernetes events, the
+
+6
+00:00:25,972 --> 00:00:28,182
+auth service log, and alert history.
+
+7
+00:00:28,182 --> 00:00:33,278
+It also contains a database password and a bearer token, and a frontend deploy that
+
+8
+00:00:33,278 --> 00:00:36,839
+happened at the same time, which is a classic red herring.
+
+9
+00:00:38,839 --> 00:00:42,502
+First, secrets are redacted locally, before any model call.
+
+10
+00:00:42,502 --> 00:00:47,717
+Then NVIDIA Nemotron 3 Nano, running on Nebius Token Factory, reads every log source
+
+11
+00:00:47,717 --> 00:00:52,808
+in parallel and extracts only the events that matter, each with a reference to its
+
+12
+00:00:52,808 --> 00:00:53,491
+exact line.
+
+13
+00:00:55,491 --> 00:00:58,034
+The expensive model never reads the raw dump.
+
+14
+00:00:58,034 --> 00:01:02,555
+Nemotron 3 Ultra, the five hundred fifty billion parameter reasoning model, gets
+
+15
+00:01:02,555 --> 00:01:05,437
+only the merged timeline and the lines that matter.
+
+16
+00:01:05,437 --> 00:01:10,128
+It separates trigger from root cause, builds the causal chain, and explicitly rules
+
+17
+00:01:10,128 --> 00:01:11,710
+out the coincidental deploy.
+
+18
+00:01:13,710 --> 00:01:16,025
+Now the part that makes this trustworthy.
+
+19
+00:01:16,025 --> 00:01:20,655
+Every single claim is fact checked by a third model, Nemotron 3 point 5 Lightning,
+
+20
+00:01:20,655 --> 00:01:23,477
+which sees only that claim and the lines it cites.
+
+21
+00:01:23,477 --> 00:01:26,526
+These checks run in parallel and take a second or two.
+
+22
+00:01:26,526 --> 00:01:30,930
+Anything the logs do not prove is flagged instead of quietly ending up in your
+
+23
+00:01:30,930 --> 00:01:31,833
+incident report.
+
+24
+00:01:33,833 --> 00:01:36,795
+Click any citation to see the raw log line behind it.
+
+25
+00:01:36,795 --> 00:01:41,377
+Here the verifier caught the reasoning model quoting a time that is not in the log
+
+26
+00:01:41,377 --> 00:01:42,159
+line it cited.
+
+27
+00:01:42,159 --> 00:01:46,630
+Below are prioritized action items, like fixing backup retention and routing the
+
+28
+00:01:46,630 --> 00:01:49,983
+repository full alert to on call instead of a null receiver.
+
+29
+00:01:51,983 --> 00:01:56,651
+The usage panel shows how the work was split: many fast, cheap calls to Nano and
+
+30
+00:01:56,651 --> 00:01:58,635
+Lightning, one deep call to Ultra.
+
+31
+00:01:58,635 --> 00:02:02,954
+A full run on this incident costs about one or two cents on Token Factory.
+
+32
+00:02:02,954 --> 00:02:07,505
+The report exports as markdown with an evidence appendix, ready for your wiki.
+
+33
+00:02:09,505 --> 00:02:14,583
+Postmortem Pilot runs entirely on Nebius Token Factory with three NVIDIA Nemotron
+
+34
+00:02:14,583 --> 00:02:19,660
+open models, each chosen for the job it does best: Nano to read, Ultra to reason,
+
+35
+00:02:19,660 --> 00:02:20,914
+Lightning to verify.
+
+36
+00:02:20,914 --> 00:02:23,797
+The code is open source under the MIT license.
+
+37
+00:02:23,797 --> 00:02:25,051
+Thanks for watching.

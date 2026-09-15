@@ -1,0 +1,1 @@
+The usage panel shows how the work was split: many fast, cheap calls to Nano and Lightning, one deep call to Ultra. A full run on this incident costs about one or two cents on Token Factory. The report exports as markdown with an evidence appendix, ready for your wiki.

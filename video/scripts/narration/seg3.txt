@@ -1,0 +1,1 @@
+First, secrets are redacted locally, before any model call. Then NVIDIA Nemotron 3 Nano, running on Nebius Token Factory, reads every log source in parallel and extracts only the events that matter, each with a reference to its exact line.

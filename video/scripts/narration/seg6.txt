@@ -1,0 +1,1 @@
+Click any citation to see the raw log line behind it. Here the verifier caught the reasoning model quoting a time that is not in the log line it cited. Below are prioritized action items, like fixing backup retention and routing the repository full alert to on call instead of a null receiver.
