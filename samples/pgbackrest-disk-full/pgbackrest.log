@@ -1,0 +1,12 @@
+2026-09-02 01:00:03.118 P00   INFO: backup command begin 2.53: --repo1-retention-full=4 --repo1-path=/var/lib/pgbackrest --stanza=main --type=incr
+2026-09-02 01:41:57.640 P00   INFO: backup command end: completed successfully (2514522ms)
+2026-09-02 01:41:58.002 P00   INFO: expire command begin 2.53: --repo1-retention-full=4 --stanza=main
+2026-09-02 01:41:58.411 P00   INFO: expire command end: completed successfully, 0 backups expired (retention-full=4 not reached)
+2026-09-02 02:00:00.029 P00  ERROR: [082]: WAL segment 0000000100000A2F00000041 was not pushed due to error in repo1: unable to write '/var/lib/pgbackrest/archive/main/16-1/0000000100000A2F00000041.zst': [28] No space left on device
+2026-09-02 02:00:00.030 P00   INFO: archive-push command end: aborted with exception [082]
+2026-09-02 02:05:00.205 P00  ERROR: [082]: WAL segment 0000000100000A2F00000041 was not pushed due to error in repo1: [28] No space left on device
+2026-09-02 02:20:00.116 P00  ERROR: [082]: WAL segment 0000000100000A2F00000041 was not pushed due to error in repo1: [28] No space left on device
+2026-09-02 02:40:00.330 P00  ERROR: [082]: WAL segment 0000000100000A2F00000041 was not pushed due to error in repo1: [28] No space left on device
+2026-09-02 03:09:12.884 P00   INFO: expire command begin 2.53: --repo1-retention-full=2 --stanza=main
+2026-09-02 03:09:40.301 P00   INFO: expire command end: completed successfully, 2 full backups expired, 38.2 GB freed
+2026-09-02 03:16:30.088 P00   INFO: archive-push command end: completed successfully

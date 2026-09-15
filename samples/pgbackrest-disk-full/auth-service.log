@@ -1,0 +1,13 @@
+2026-09-02T02:50:59.114Z INFO  auth-service POST /v1/login 200 41ms user=u_18233
+2026-09-02T02:51:38.010Z ERROR auth-service POST /v1/login 500 12ms error="pq: could not extend file \"base/16384/2619\": No space left on device"
+2026-09-02T02:51:52.600Z ERROR auth-service db pool: connection reset by peer dsn=postgres://auth_svc:S3cr3t-Pg-Pass@postgres-0.db:5432/auth
+2026-09-02T02:51:53.100Z WARN  auth-service retrying db connect attempt=1 backoff=250ms
+2026-09-02T02:51:58.400Z ERROR auth-service db connect failed: dial tcp 10.42.3.17:5432: connect: connection refused
+2026-09-02T02:52:05.221Z ERROR auth-service POST /v1/login 503 2ms error="database unavailable"
+2026-09-02T02:52:07.908Z ERROR auth-service POST /v1/login 503 1ms error="database unavailable"
+2026-09-02T02:55:00.000Z WARN  auth-service login error rate 97.8% over 5m (1622 of 1658 requests)
+2026-09-02T03:01:12.431Z INFO  auth-service outbound call to billing Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhdXRoLXN2YyJ9.q8r2lKxS0t-demo-signature
+2026-09-02T03:05:00.000Z WARN  auth-service login error rate 99.1% over 5m (1790 of 1806 requests)
+2026-09-02T03:16:05.300Z INFO  auth-service db connect ok pool_size=20
+2026-09-02T03:16:07.012Z INFO  auth-service POST /v1/login 200 88ms user=u_90211
+2026-09-02T03:20:00.000Z INFO  auth-service login error rate 0.4% over 5m

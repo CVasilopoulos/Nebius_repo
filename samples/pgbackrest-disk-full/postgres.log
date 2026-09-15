@@ -1,0 +1,32 @@
+2026-09-02 01:58:02.114 UTC [412] LOG:  checkpoint starting: time
+2026-09-02 01:58:31.902 UTC [412] LOG:  checkpoint complete: wrote 1842 buffers (1.4%); 0 WAL file(s) added, 3 removed, 0 recycled
+2026-09-02 02:00:00.031 UTC [98231] LOG:  archive command failed with exit code 82
+2026-09-02 02:00:00.031 UTC [98231] DETAIL:  The failed archive command was: pgbackrest --stanza=main archive-push pg_wal/0000000100000A2F00000041
+2026-09-02 02:00:01.412 UTC [98231] WARNING:  archiving write-ahead log file "0000000100000A2F00000041" failed too many times, will try again later
+2026-09-02 02:00:14.550 UTC [5512] LOG:  connection authorized: user=auth_svc database=auth application_name=auth-service
+2026-09-02 02:05:00.207 UTC [98231] LOG:  archive command failed with exit code 82
+2026-09-02 02:05:01.588 UTC [98231] WARNING:  archiving write-ahead log file "0000000100000A2F00000041" failed too many times, will try again later
+2026-09-02 02:10:44.019 UTC [412] LOG:  checkpoint starting: wal
+2026-09-02 02:10:44.020 UTC [412] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2026-09-02 02:20:00.118 UTC [98231] LOG:  archive command failed with exit code 82
+2026-09-02 02:31:12.740 UTC [412] LOG:  checkpoint complete: wrote 90211 buffers (68.8%); 0 WAL file(s) added, 0 removed, 0 recycled
+2026-09-02 02:40:00.332 UTC [98231] LOG:  archive command failed with exit code 82
+2026-09-02 02:40:02.015 UTC [98231] WARNING:  pg_wal contains 612 files not yet archived (9.6 GB)
+2026-09-02 02:51:37.880 UTC [6023] ERROR:  could not extend file "base/16384/2619": No space left on device
+2026-09-02 02:51:37.880 UTC [6023] HINT:  Check free disk space.
+2026-09-02 02:51:38.004 UTC [6023] STATEMENT:  INSERT INTO sessions (user_id, token_hash, expires_at) VALUES ($1, $2, $3)
+2026-09-02 02:51:52.131 UTC [412] PANIC:  could not write to file "pg_wal/xlogtemp.412": No space left on device
+2026-09-02 02:51:52.470 UTC [1] LOG:  checkpointer process (PID 412) was terminated by signal 6: Aborted
+2026-09-02 02:51:52.470 UTC [1] LOG:  terminating any other active server processes
+2026-09-02 02:51:53.002 UTC [1] LOG:  all server processes terminated; reinitializing
+2026-09-02 02:51:54.311 UTC [7001] LOG:  database system was interrupted; last known up at 2026-09-02 02:31:12 UTC
+2026-09-02 02:51:55.920 UTC [7001] FATAL:  could not write to file "pg_wal/xlogtemp.7001": No space left on device
+2026-09-02 02:51:56.001 UTC [1] LOG:  startup process (PID 7001) exited with exit code 1
+2026-09-02 02:51:56.001 UTC [1] LOG:  aborting startup due to startup process failure
+2026-09-02 03:14:20.551 UTC [1] LOG:  starting PostgreSQL 16.4 on x86_64-pc-linux-gnu
+2026-09-02 03:14:21.207 UTC [88] LOG:  database system was interrupted; last known up at 2026-09-02 02:31:12 UTC
+2026-09-02 03:14:23.660 UTC [88] LOG:  redo starts at A2F/41000028
+2026-09-02 03:16:02.118 UTC [88] LOG:  redo done at A31/9C0017F0
+2026-09-02 03:16:04.771 UTC [1] LOG:  database system is ready to accept connections
+2026-09-02 03:16:30.090 UTC [131] LOG:  archived write-ahead log file "0000000100000A2F00000041"
+2026-09-02 03:21:45.502 UTC [131] LOG:  pg_wal backlog drained: 0 files pending archive

@@ -1,0 +1,5 @@
+2026-09-10T00:30:00Z WARN payments no webhook received from partner in 30m (expected ~40/min)
+2026-09-10T01:00:00Z ERROR payments 212 orders stuck in PENDING_CONFIRMATION
+2026-09-10T01:05:12Z INFO payments on-call paged: orders stuck in pending
+2026-09-10T01:45:00Z INFO payments webhook backlog replay started by partner, 2381 events
+2026-09-10T02:02:31Z INFO payments PENDING_CONFIRMATION orders: 0

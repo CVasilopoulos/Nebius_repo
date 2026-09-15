@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postmortem Pilot</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo">PP</div>
+    <div>
+      <h1>Postmortem Pilot</h1>
+      <p>Raw outage logs in, evidence-grounded blameless postmortem out.</p>
+    </div>
+  </div>
+  <div class="models" id="models"></div>
+</header>
+
+<main>
+  <section class="panel input">
+    <div class="panel-head">
+      <h2>1. Evidence</h2>
+      <span class="hint" id="liveBadge"></span>
+    </div>
+    <div class="samples" id="samples"></div>
+    <div class="tabs" id="tabs"></div>
+    <textarea id="editor" spellcheck="false" placeholder="Paste a log file here..."></textarea>
+    <div class="row">
+      <input id="sourceName" placeholder="source name, e.g. postgres.log">
+      <button class="ghost" id="addSource">+ Add source</button>
+      <button class="ghost" id="removeSource">Remove</button>
+    </div>
+    <p class="privacy">Secrets (passwords in DSNs, bearer tokens, JWTs, API keys, emails) are redacted on the server before any model call.</p>
+    <div class="actions">
+      <button id="runLive" class="primary">Analyze live on Token Factory</button>
+      <button id="runReplay" class="ghost">Replay recorded run</button>
+    </div>
+  </section>
+
+  <section class="panel pipeline">
+    <div class="panel-head"><h2>2. Pipeline</h2><span class="hint" id="clock"></span></div>
+    <div class="stages">
+      <div class="stage" id="st-redact"><div class="st-top"><span class="dot"></span><b>Redact</b><span class="tag local">local</span></div><div class="st-model">regex, no model</div><div class="st-body">waiting</div></div>
+      <div class="stage" id="st-extract"><div class="st-top"><span class="dot"></span><b>Extract events</b><span class="tag nano">fast</span></div><div class="st-model" data-model="extract"></div><div class="st-body">waiting</div><div class="bars" id="chunkBars"></div></div>
+      <div class="stage" id="st-reason"><div class="st-top"><span class="dot"></span><b>Reason about causes</b><span class="tag ultra">deep</span></div><div class="st-model" data-model="reason"></div><div class="st-body">waiting</div></div>
+      <div class="stage" id="st-verify"><div class="st-top"><span class="dot"></span><b>Verify every claim</b><span class="tag light">fast</span></div><div class="st-model" data-model="verify"></div><div class="st-body">waiting</div><div class="bars" id="verifyBars"></div></div>
+    </div>
+    <div id="warnings"></div>
+  </section>
+
+  <section class="panel results" id="results" hidden>
+    <div class="panel-head"><h2>3. Postmortem</h2>
+      <div class="row tight">
+        <button class="ghost" id="copyMd">Copy Markdown</button>
+        <button class="ghost" id="downloadMd">Download .md</button>
+      </div>
+    </div>
+    <div class="headline">
+      <div>
+        <div class="sev" id="sev"></div>
+        <h3 id="title"></h3>
+        <p id="summary"></p>
+        <p class="window" id="window"></p>
+      </div>
+      <div class="score" id="score"></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <h4>Causal chain</h4>
+        <ol class="chain" id="chain"></ol>
+        <h4>Ruled out</h4>
+        <ul class="claims" id="herrings"></ul>
+      </div>
+      <div>
+        <div class="claims keyclaims" id="keyclaims"></div>
+        <h4>Contributing factors</h4>
+        <ul class="claims" id="factors"></ul>
+      </div>
+    </div>
+    <h4>Action items</h4>
+    <table class="actions-table"><thead><tr><th>Priority</th><th>Type</th><th>Action</th></tr></thead><tbody id="actionsBody"></tbody></table>
+    <div id="questionsWrap"><h4>Open questions</h4><ul id="questions"></ul></div>
+    <h4>Timeline <span class="hint" id="timelineHint"></span></h4>
+    <ul class="timeline" id="timeline"></ul>
+    <h4>Token Factory usage</h4>
+    <div class="usage" id="usage"></div>
+  </section>
+</main>
+<footer>Runs on Nebius Token Factory with NVIDIA Nemotron open models. Built for the Nebius x NVIDIA Global AI Hackathon.</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

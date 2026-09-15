@@ -1,0 +1,11 @@
+2026-09-02T01:47:10Z  Normal   ScalingReplicaSet  deployment/web-frontend       Scaled up replica set web-frontend-7d9c4 to 3 (image web-frontend:v2.14.0)
+2026-09-02T01:49:02Z  Normal   ScalingReplicaSet  deployment/web-frontend       Scaled down replica set web-frontend-5b8f1 to 0
+2026-09-02T02:12:40Z  Warning  VolumeUsageHigh    pvc/pgbackrest-repo           Volume usage 100% (200Gi/200Gi)
+2026-09-02T02:51:56Z  Warning  BackOff            pod/postgres-0                Back-off restarting failed container postgres
+2026-09-02T02:52:30Z  Warning  Unhealthy          pod/auth-service-6c7f8-xk2lp  Readiness probe failed: HTTP probe failed with statuscode: 503
+2026-09-02T02:52:31Z  Warning  Unhealthy          pod/auth-service-6c7f8-q9vtm  Readiness probe failed: HTTP probe failed with statuscode: 503
+2026-09-02T02:58:12Z  Warning  VolumeUsageHigh    pvc/pgdata-postgres-0         Volume usage 100% (50Gi/50Gi)
+2026-09-02T03:03:41Z  Normal   Killing            pod/web-frontend-7d9c4-2hdd8  Stopping container web-frontend (manual rollback requested)
+2026-09-02T03:04:20Z  Normal   ScalingReplicaSet  deployment/web-frontend       Scaled up replica set web-frontend-5b8f1 to 3 (image web-frontend:v2.13.2)
+2026-09-02T03:14:18Z  Normal   Started            pod/postgres-0                Started container postgres
+2026-09-02T03:16:40Z  Normal   Ready              pod/auth-service-6c7f8-xk2lp  Readiness probe succeeded
