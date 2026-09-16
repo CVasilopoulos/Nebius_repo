@@ -8,6 +8,12 @@ The difference from "paste logs into a chatbot": **every claim cites the exact l
 
 Built for the **Nebius x NVIDIA Global AI Hackathon**, track **Best Apps and Agents**. It runs entirely on **Nebius Token Factory** using three **NVIDIA Nemotron** open models.
 
+## Live demo
+
+**https://cvasilopoulos.github.io/Nebius_repo/**
+
+This is a static GitHub Pages build: it replays a real, recorded Token Factory run (the same UI, citation chips, evidence score and Markdown export as below) with no server and no API key, so it never goes down or costs anything. To run it live against Token Factory with your own Nebius key, see [Setup](#setup). Video: [video/postmortem-pilot-demo.mp4](video/postmortem-pilot-demo.mp4).
+
 ## Why
 
 Every on-call team writes postmortems. They take hours of log archaeology, they are written when everyone is tired, and the root-cause section is often a plausible guess that nobody traces back to evidence. Generic LLM summaries make that worse: they sound confident and hallucinate causes. Postmortem Pilot is designed around the opposite principle - cheap models do the reading and the checking, the expensive reasoning model only sees distilled evidence, and nothing is shown without a citation.

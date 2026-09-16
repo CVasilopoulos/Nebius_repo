@@ -1,4 +1,4 @@
-const STATIC_MODE = false;
+const STATIC_MODE = true;
 const $ = (id) => document.getElementById(id);
 const state = { samples: [], sources: [], active: 0, sampleId: null, lines: {}, sourceNames: {}, analysis: null, markdown: "", verdicts: {}, counts: null, running: false, timer: null, started: 0 };
 

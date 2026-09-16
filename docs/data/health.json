@@ -1,0 +1,1 @@
+{"ok": true, "live": false, "models": {"extract": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B", "reason": "nvidia/Nemotron-3-Ultra-550b-a55b", "verify": "nvidia/Nemotron-3_5-Lightning"}, "max_lines": 1500}

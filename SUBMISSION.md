@@ -13,7 +13,7 @@ Best Apps and Agents
 python, fastapi, httpx, javascript, html, css, docker, nebius-token-factory, nvidia-nemotron, nemotron-3-ultra, nemotron-3-nano, nemotron-3.5-lightning
 
 ## Demo URL
-TODO (see DEPLOY.md)
+https://cvasilopoulos.github.io/Nebius_repo/ (static GitHub Pages build replaying a real recorded Token Factory run; see DEPLOY.md for a live-inference alternative)
 
 ## Repository URL
 TODO (public GitHub repo with MIT license)
