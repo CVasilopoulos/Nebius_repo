@@ -16,10 +16,10 @@ python, fastapi, httpx, javascript, html, css, docker, nebius-token-factory, nvi
 https://cvasilopoulos.github.io/Nebius_repo/ (static GitHub Pages build replaying a real recorded Token Factory run; see DEPLOY.md for a live-inference alternative)
 
 ## Repository URL
-TODO (public GitHub repo with MIT license)
+https://github.com/CVasilopoulos/Nebius_repo
 
 ## Video URL
-TODO (public YouTube link)
+https://youtu.be/TsrVQdKUxKg
 
 ## Description (Markdown)
 
